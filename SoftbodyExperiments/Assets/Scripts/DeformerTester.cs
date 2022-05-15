@@ -3,14 +3,16 @@ using UnityEngine;
 public class DeformerTester : MonoBehaviour
 {
     [SerializeField] MeshDeformer meshDeformer;
+    [SerializeField] float force = 5f;
 
     private void Update()
     {
-        DoTheDeform();
+        if (Input.GetKey(KeyCode.Space))
+            DoTheDeform();
     }
 
     private void DoTheDeform()
     {
-        meshDeformer.Deform(transform.position, transform.localScale.x * .5f);
+        meshDeformer.AddDeformingForce(transform.position, force);
     }
 }

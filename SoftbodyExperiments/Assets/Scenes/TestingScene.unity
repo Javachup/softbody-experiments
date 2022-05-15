@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641859609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.754}
+  m_LocalPosition: {x: 0, y: 0, z: -1.287}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshDeformer: {fileID: 1269890081}
+  force: 10
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,3 +487,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37541953c5660a44a8e7d08f29d891fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  springForce: 5
+  dampening: 3
