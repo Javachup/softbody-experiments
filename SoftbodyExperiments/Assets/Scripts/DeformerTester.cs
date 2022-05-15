@@ -2,17 +2,37 @@ using UnityEngine;
 
 public class DeformerTester : MonoBehaviour
 {
-    [SerializeField] MeshDeformer meshDeformer;
     [SerializeField] float force = 5f;
+    [SerializeField] float offset = 0.1f;
+
+    Camera cam;
+
+    private void Awake()
+    {
+        cam = Camera.main;
+    }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetMouseButton(0))
             DoTheDeform();
     }
 
     private void DoTheDeform()
     {
-        meshDeformer.AddDeformingForce(transform.position, force);
+        Ray inputRay = cam.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(inputRay, out RaycastHit hit))
+        {
+            Debug.DrawLine(cam.transform.position, hit.point);
+
+            MeshDeformer meshDeformer = hit.collider.GetComponent<MeshDeformer>();
+
+            if (meshDeformer)
+            {
+                Vector3 position = hit.point + hit.normal * offset;
+                meshDeformer.AddDeformingForce(position, force);
+            }
+        }
     }
 }
